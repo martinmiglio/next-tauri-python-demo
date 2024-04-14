@@ -8,3 +8,4 @@ out
 bundle
 .next
 **/schemas/**/*.json
+pnpm-lock.yaml
