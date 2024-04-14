@@ -4,7 +4,7 @@
   "scripts": {
     "postinstall": "poetry install",
     "dev": "poetry run python -m uvicorn app.main:app --reload --host localhost --port 8040 --log-level info",
-    "build": "poe build",
+    "build": "poetry run poe build",
     "format": "poetry run isort . && poetry run black ."
   }
 }
