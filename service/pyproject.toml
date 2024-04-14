@@ -1,0 +1,87 @@
+[tool.poetry]
+name = "app"
+version = "v0.0.0"
+description = ""
+readme = "../README.md"
+authors = ["Martin Miglio <code@martinmiglio.dev>"]
+
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+fastapi = "^0.110.1"
+uvicorn = "^0.29.0"
+websockets = "^12.0"
+
+
+[tool.poetry.group.build]
+optional = true
+
+
+[tool.poetry.group.build.dependencies]
+nuitka = "^2.1.5"
+poethepoet = "^0.25.0"
+
+
+[tool.poetry.group.dev]
+optional = true
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.7.0"
+black = "^24.3.0"
+isort = "^5.13.0"
+poethepoet = "^0.25.0"
+
+
+[tool.poe.tasks.build]
+shell = """
+poetry run python \
+    -m nuitka \
+    --include-module=app.main \
+    --assume-yes-for-downloads \
+    --disable-console \
+    --deployment \
+    --output-dir=bundle \
+    --output-file=service-x86_64-pc-windows-msvc.exe \
+    --standalone \
+    runner.py
+"""
+
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
+
+
+[tool.isort]
+profile = "black"
+
+
+[tool.pylint.main]
+ignore = ["build", "debug"]
+py-version = "3.10"
+suggestion-mode = true
+disable = [
+  "C0114", # missing-module-docstring
+  "C0115", # missing-class-docstring
+  "C0116", # missing-function-docstring
+  "C0301", # line-too-long
+  "C0103", # invalid-name
+]

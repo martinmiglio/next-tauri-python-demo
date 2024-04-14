@@ -1,0 +1,28 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "experimentalUI": false,
+  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": ["NODE_ENV"],
+  "pipeline": {
+    "service#build": {
+      "outputs": ["bundle/**"]
+    },
+    "ui#build": {
+      "dependsOn": ["service#build"],
+      "outputs": [
+        "out/**",
+        "src-tauri/target/bundle/**",
+        ".next/**",
+        "!.next/cache/**"
+      ]
+    },
+    "dev": {
+      "dependsOn": ["service#build"],
+      "cache": false,
+      "persistent": true
+    },
+    "format": {
+      "cache": false
+    }
+  }
+}

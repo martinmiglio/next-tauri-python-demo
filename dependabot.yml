@@ -1,0 +1,18 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/ui'
+    schedule:
+      internal: 'weekly'
+  - package-ecosystem: 'cargo'
+    directory: '/'
+    schedule:
+      internal: 'weekly'
+  - package-ecosystem: 'cargo'
+    directory: '/ui/src-tauri'
+    schedule:
+      internal: 'weekly'
+  - package-ecosystem: 'pip'
+    directory: '/service'
+    schedule:
+      internal: 'weekly'

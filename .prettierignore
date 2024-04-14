@@ -1,0 +1,9 @@
+/.github
+/.vscode
+node_modules
+target
+dist
+*schema.json
+out
+bundle
+.next

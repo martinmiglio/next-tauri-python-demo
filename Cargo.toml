@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = ["ui/src-tauri"]
+
+
+[workspace.package]
+authors = ["Martin Miglio <code@martinmiglio.dev>"]
+repository = "https://github.com/martinmiglio/package.json"
+edition = "2021"
+rust-version = "1.60"
