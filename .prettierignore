@@ -7,3 +7,4 @@ dist
 out
 bundle
 .next
+**/schemas/**/*.json
