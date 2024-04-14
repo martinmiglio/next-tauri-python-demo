@@ -7,19 +7,13 @@ authors = ["Martin Miglio <code@martinmiglio.dev>"]
 
 
 [tool.poetry.dependencies]
-python = ">=3.11,<3.13"
+python = "^3.11.0"
 fastapi = "^0.110.1"
 uvicorn = "^0.29.0"
 websockets = "^12.0"
-
-
-[tool.poetry.group.build]
-optional = true
-
-
-[tool.poetry.group.build.dependencies]
 nuitka = "^2.1.5"
-poethepoet = "^0.25.0"
+poethepoet = "^0.25.1"
+
 
 
 [tool.poetry.group.dev]

@@ -2,9 +2,14 @@
   "version": "0.0.0",
   "name": "service",
   "scripts": {
-    "postinstall": "poetry install",
+    "postinstall": "by-node-env",
+    "postinstall:development": "poetry install --with dev",
+    "postinstall:production": "poetry install",
     "dev": "poetry run python -m uvicorn app.main:app --reload --host localhost --port 8040 --log-level info",
     "build": "poetry run poe build",
     "format": "poetry run isort . && poetry run black ."
+  },
+  "dependencies": {
+    "by-node-env": "^2.0.1"
   }
 }
