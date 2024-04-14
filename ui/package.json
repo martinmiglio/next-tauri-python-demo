@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "tauri dev",
-    "build": "tauri build",
+    "build": "node prebuild.js && tauri build",
     "next-dev": "next dev",
     "next-build": "next build",
     "next-start": "next start",
