@@ -1,0 +1,67 @@
+name: 'Build and Release'
+
+on:
+  push:
+    branches:
+      - release
+
+
+jobs:
+  build-and-release:
+    permissions:
+      contents: write
+
+    runs-on: 'windows-latest'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: install Poetry
+        run: |
+          pipx install "poetry>=1.7.0"
+
+      - name: setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          cache: "poetry"
+
+      - name: install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          run_install: false
+
+      - name: get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: build the app
+        run: pnpm build
+
+      - name: publish release
+        uses: softprops/action-gh-release@master
+        id: release
+        with:
+          generate_release_notes: true
+          files: |
+            ./target/release/bundle/nsis/*setup.exe
+
