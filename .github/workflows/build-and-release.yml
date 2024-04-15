@@ -57,13 +57,18 @@ jobs:
       - name: install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: parse version
+        shell: bash
+        run: |
+          TAG_NAME=${{ github.ref_name }}
+          echo "VERSION=${TAG_NAME:1}" >> $GITHUB_ENV
+
       - name: build the app
         env:
-          VERSION: ${{ github.ref_name }}
           TURBO_API: ${{ secrets.TURBO_API }}
           TURBO_TOKEN: ${{ secrets.TURBO_SECRET }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-        run: pnpm build
+        run: pnpm build:ci
 
       - name: publish release
         uses: softprops/action-gh-release@master

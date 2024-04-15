@@ -4,6 +4,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build": "turbo build",
+    "build:ci": "turbo build:ci",
     "dev": "turbo dev",
     "format": "turbo format && prettier --write .",
     "postinstall": "husky install"

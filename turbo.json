@@ -2,12 +2,21 @@
   "$schema": "https://turbo.build/schema.json",
   "experimentalUI": false,
   "globalDependencies": ["**/.env.*local"],
-  "globalEnv": ["NODE_ENV"],
+  "globalEnv": ["NODE_ENV", "VERSION"],
   "pipeline": {
     "service#build": {
       "outputs": ["build/**"]
     },
     "ui#build": {
+      "dependsOn": ["service#build"],
+      "outputs": [
+        "out/**",
+        "src-tauri/target/bundle/**",
+        ".next/**",
+        "!.next/cache/**"
+      ]
+    },
+    "ui#build:ci": {
       "dependsOn": ["service#build"],
       "outputs": [
         "out/**",

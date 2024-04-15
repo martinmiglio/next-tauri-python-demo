@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "tauri dev",
-    "build": "node prebuild.js && prettier --config ../prettier.config.js -w src-tauri/tauri.conf.json && tauri build",
+    "build": "tauri build",
+    "build:ci": "tauri build -c ('{ \\\"version\\\": \\\"' + $env:VERSION + '\\\" }')",
     "next-dev": "next dev",
     "next-build": "next build",
     "next-start": "next start",
@@ -23,6 +24,7 @@
     "@tauri-apps/plugin-websocket": "^2.0.0-beta.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "cross-env": "^7.0.3",
     "lucide-react": "^0.368.0",
     "mini-svg-data-uri": "^1.4.4",
     "next": "14.2.0",
