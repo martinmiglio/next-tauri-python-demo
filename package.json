@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build": "turbo build --cache-dir=.turbo",
+    "build": "turbo build",
     "dev": "turbo dev",
     "format": "turbo format && prettier --write .",
     "postinstall": "husky install"
@@ -13,7 +13,7 @@
     "husky": "^6.0.0",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
-    "turbo": "^1.13.2"
+    "turbo": "1.10.16"
   },
   "packageManager": "pnpm@8.15.0"
 }
