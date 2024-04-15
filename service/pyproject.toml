@@ -11,9 +11,7 @@ python = "^3.11.0"
 fastapi = "^0.110.1"
 uvicorn = "^0.29.0"
 websockets = "^12.0"
-nuitka = "^2.1.5"
-poethepoet = "^0.25.1"
-
+cx-freeze = "^6.15.16"
 
 
 [tool.poetry.group.dev]
@@ -24,22 +22,6 @@ optional = true
 pre-commit = "^3.7.0"
 black = "^24.3.0"
 isort = "^5.13.0"
-poethepoet = "^0.25.0"
-
-
-[tool.poe.tasks.build]
-shell = """
-poetry run python \
-    -m nuitka \
-    --include-module=app.main \
-    --assume-yes-for-downloads \
-    --disable-console \
-    --deployment \
-    --output-dir=bundle \
-    --output-file=service-x86_64-pc-windows-msvc.exe \
-    --standalone \
-    runner.py
-"""
 
 
 [tool.black]

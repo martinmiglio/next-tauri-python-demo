@@ -5,7 +5,7 @@
   "globalEnv": ["NODE_ENV"],
   "pipeline": {
     "service#build": {
-      "outputs": ["bundle/**"]
+      "outputs": ["build/**"]
     },
     "ui#build": {
       "dependsOn": ["service#build"],

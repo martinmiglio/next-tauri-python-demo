@@ -14,9 +14,9 @@
     "category": "Game",
     "copyright": "",
     "targets": "nsis",
-    "externalBin": ["../../service/bundle/runner.dist/service"],
+    "externalBin": ["../../service/build/bin/service"],
     "resources": {
-      "../../service/bundle/runner.dist/": "."
+      "../../service/build/exe.win-amd64-3.11/": "."
     },
     "icon": [
       "icons/32x32.png",

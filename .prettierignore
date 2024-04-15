@@ -9,3 +9,4 @@ bundle
 .next
 **/schemas/**/*.json
 pnpm-lock.yaml
+build
