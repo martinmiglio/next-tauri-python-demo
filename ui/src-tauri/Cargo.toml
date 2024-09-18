@@ -14,7 +14,7 @@ tauri-build = { version = "2.0.0-beta", features = [] }
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "2.0.0-beta", features = [] }
+tauri = { version = "2.0.0-beta.20", features = [] }
 tauri-plugin-websocket = "2.0.0-beta.3"
 tauri-plugin-shell = "2.0.0-beta"
 tauri-plugin-single-instance = "2.0.0-beta.5"
